@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1059982202808",
+    "project_id": "project07-5754f",
+    "storage_bucket": "project07-5754f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1059982202808:android:e005ccc471a02cb747214d",
+        "android_client_info": {
+          "package_name": "com.eslam.project07"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1059982202808-8688b8kfv92lcvkdpg7h7d5k3dgadnpa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTN28b1qPJRH_qS6BM__cj5GLZF3ksYVU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1059982202808-8688b8kfv92lcvkdpg7h7d5k3dgadnpa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
