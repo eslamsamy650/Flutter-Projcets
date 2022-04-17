@@ -63,20 +63,7 @@ class _ViewProductsState extends State<ViewProducts> {
                         ),
                         
                         
-                        // // width: MediaQuery.of(context).size.width / 1.2,
-                        // // height: MediaQuery.of(context).size.height / 6,
-                        // // child: Column(
-                        // //   mainAxisAlignment: MainAxisAlignment.center,
-                        // //   children: [
-                        // //     new Text('Name :  '+document['Name']),
-                        // //     new Text('Price :  '+document['Price'].toString()),
-                        // //     new Text('NumProduct :  '+document['NumProduct'].toString()),
-                        //   ],
-                       
-                        
-                        
-                        
-                 
+
                                  ),
                                  Expanded(
                                    flex: 5,

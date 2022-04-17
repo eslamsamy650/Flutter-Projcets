@@ -12,7 +12,7 @@ class _AddState extends State<Add> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('Your Product was added successfully'),
+        child: Text('You Have To Insert A Name'),
       ),
     );
   }
