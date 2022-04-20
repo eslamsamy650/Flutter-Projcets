@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "486258096842",
+    "project_id": "shopappeslam",
+    "storage_bucket": "shopappeslam.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:486258096842:android:1924ea4c2918736297d233",
+        "android_client_info": {
+          "package_name": "com.shop.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "486258096842-15hg32mcph21n5h5o9i9ofgkenf15qvt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shop.app",
+            "certificate_hash": "b024047557bbbc2a82546c06812f210f9e5c3642"
+          }
+        },
+        {
+          "client_id": "486258096842-g0sv7vmltgqlrqjmsjdcm4r0993st2jk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9Mjjgf86PcBrJ87mmzMMWiBKM8L22n5Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "486258096842-g0sv7vmltgqlrqjmsjdcm4r0993st2jk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

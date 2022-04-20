@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -8,12 +7,14 @@ import 'package:project_07/add.dart';
 
 class home extends StatefulWidget {
   home({Key? key}) : super(key: key);
+  
 
   @override
   State<home> createState() => _homeState();
 }
 
 class _homeState extends State<home> {
+  
   bool change = false;
   bool loginButton = true;
   bool logoutButton = true;
@@ -24,11 +25,27 @@ class _homeState extends State<home> {
   final data = FirebaseFirestore.instance.collection('Users');
   final items = ['Eslam', 'Mahmoud', 'Abdo', 'Samy', 'Zero'];
   var _dropdownValue;
+  var logtime = "Samy";
 
   final CollectionReference collectionReference =
       FirebaseFirestore.instance.collection('Users');
+      
 
-  void _showDialog() {}
+  
+
+ 
+
+  
+
+  DateTime timeD (DateTime time1 , DateTime time2){
+     DateTime x = time1.subtract( Duration(hours: time2.hour,minutes : time2.minute , seconds :time2.second));
+  return (x);
+}
+
+
+
+
+  
 
   @override
   void initState() {
@@ -101,15 +118,194 @@ class _homeState extends State<home> {
     nameControllor.dispose();
     super.dispose();
   }
-
-  Future<void> dropdownCallback(String? selectedValue) async {
-    DocumentSnapshot documentSnapshotEslam = await FirebaseFirestore.instance
-        .collection('my_contact')
+  
+   Future<dynamic> logtim () async {
+       DocumentSnapshot documentSnapshotEslam = await FirebaseFirestore.instance
+        .collection('Users')
         .doc('7BrHBRzfWV6VIMTiKQs1')
         .get();
-    if (selectedValue is String) {
+    DocumentSnapshot documentSnapshotMahmoud = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc('JREaX2U9h0J1OlTguAjs')
+        .get();
+    DocumentSnapshot documentSnapshotAbdo = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc('cTtofZa7zvPWKvWmVl4q')
+        .get();
+    DocumentSnapshot documentSnapshotSamy = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc('Ar9k6kZPpgFjJRl7HHbm')
+        .get();
+    DocumentSnapshot documentSnapshotZero = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc('NCkpgnEBEUNAtjioS58B')
+        .get();
+        
+
+     if (_dropdownValue=="Eslam"){
+       Timestamp x = (documentSnapshotEslam.data()! as Map<String, dynamic>)['Login'];
+        DateTime d = x.toDate();
+        num H=d.hour ;
+        num M =d.minute;
+        num S = d.second;
+       return '${H}:${M}:${S}';
+     } else if (_dropdownValue=="Mahmoud"){
+       Timestamp x = (documentSnapshotMahmoud.data()! as Map<String, dynamic>)['Login'];
+        DateTime d = x.toDate();
+        num H=d.hour ;
+        num M =d.minute;
+        num S = d.second;
+       return '${H}:${M}:${S}';
+
+     }
+      else if (_dropdownValue=="Abdo"){
+       Timestamp x = (documentSnapshotAbdo.data()! as Map<String, dynamic>)['Login'];
+        DateTime d = x.toDate();
+        num H=d.hour ;
+        num M =d.minute;
+        num S = d.second;
+       return '${H}:${M}:${S}';
+
+     }
+      else if (_dropdownValue=="Samy"){
+       Timestamp x = (documentSnapshotSamy.data()! as Map<String, dynamic>)['Login'];
+        DateTime d = x.toDate();
+        num H=d.hour ;
+        num M =d.minute;
+        num S = d.second;
+       return '${H}:${M}:${S}';
+
+     }
+      else if (_dropdownValue=="Zero"){
+       Timestamp x = (documentSnapshotZero.data()! as Map<String, dynamic>)['Login'];
+        DateTime d = x.toDate();
+        num H=d.hour ;
+        num M =d.minute;
+        num S = d.second;
+       return '${H}:${M}:${S}';
+
+     }
+     
+     else{
+       return Text("error");
+     }
+
+ }
+   Future<dynamic> timeall () async {
+              DocumentSnapshot documentSnapshotEslam = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc('7BrHBRzfWV6VIMTiKQs1')
+        .get();
+    DocumentSnapshot documentSnapshotMahmoud = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc('JREaX2U9h0J1OlTguAjs')
+        .get();
+    DocumentSnapshot documentSnapshotAbdo = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc('cTtofZa7zvPWKvWmVl4q')
+        .get();
+    DocumentSnapshot documentSnapshotSamy = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc('Ar9k6kZPpgFjJRl7HHbm')
+        .get();
+    DocumentSnapshot documentSnapshotZero = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc('NCkpgnEBEUNAtjioS58B')
+        .get();
+        
+        
+       
+
+     if (_dropdownValue=="Eslam"){
+       num x = (documentSnapshotEslam.data()! as Map<String, dynamic>)['Duration'];
+       return x;
+     }
+     else{
+       return Text("error");
+     }
+
+ }
+    Future<dynamic> logtimo () async {
+               DocumentSnapshot documentSnapshotEslam = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc('7BrHBRzfWV6VIMTiKQs1')
+        .get();
+    DocumentSnapshot documentSnapshotMahmoud = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc('JREaX2U9h0J1OlTguAjs')
+        .get();
+    DocumentSnapshot documentSnapshotAbdo = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc('cTtofZa7zvPWKvWmVl4q')
+        .get();
+    DocumentSnapshot documentSnapshotSamy = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc('Ar9k6kZPpgFjJRl7HHbm')
+        .get();
+    DocumentSnapshot documentSnapshotZero = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc('NCkpgnEBEUNAtjioS58B')
+        .get();
+
+     if (_dropdownValue=="Eslam"){
+       Timestamp x = (documentSnapshotEslam.data()! as Map<String, dynamic>)['logout'];
+        DateTime d = x.toDate();
+        num H=d.hour ;
+        num M =d.minute;
+        num S = d.second;
+       return '${H}:${M}:${S}';
+     }
+     else if (_dropdownValue=="Mahmoud"){
+       Timestamp x = (documentSnapshotMahmoud.data()! as Map<String, dynamic>)['logout'];
+        DateTime d = x.toDate();
+        num H=d.hour ;
+        num M =d.minute;
+        num S = d.second;
+       return '${H}:${M}:${S}';
+
+     }
+      else if (_dropdownValue=="Abdo"){
+       Timestamp x = (documentSnapshotAbdo.data()! as Map<String, dynamic>)['logout'];
+        DateTime d = x.toDate();
+        num H=d.hour ;
+        num M =d.minute;
+        num S = d.second;
+       return '${H}:${M}:${S}';
+
+     }
+      else if (_dropdownValue=="Samy"){
+       Timestamp x = (documentSnapshotSamy.data()! as Map<String, dynamic>)['logout'];
+        DateTime d = x.toDate();
+        num H=d.hour ;
+        num M =d.minute;
+        num S = d.second;
+       return '${H}:${M}:${S}';
+
+     }
+      else if (_dropdownValue=="Zero"){
+       Timestamp x = (documentSnapshotZero.data()! as Map<String, dynamic>)['logout'];
+        DateTime d = x.toDate();
+        num H=d.hour ;
+        num M =d.minute;
+        num S = d.second;
+       return '${H}:${M}:${S}';
+
+     }
+     
+     else{
+       return Text("error");
+     }
+
+ }
+
+  Future<void> dropdownCallback(String? selectedValue) async {
+          
+        
+    
+    if (selectedValue is String ) {
       setState(() {
         _dropdownValue = selectedValue;
+       
         _subbutton();
       });
     }
@@ -147,6 +343,7 @@ class _homeState extends State<home> {
         (documentSnapshotEslam.data()! as Map<String, dynamic>)['Login'] != 0) {
       setState(() {
         loginButton = false;
+      
         if ((documentSnapshotEslam.data()! as Map<String, dynamic>)['BreakStart'] == 1) {
              logoutButton = false;
                 }else if ((documentSnapshotEslam.data()! as Map<String, dynamic>)['BreakStart'] == 0){
@@ -243,7 +440,8 @@ class _homeState extends State<home> {
     DateTime now = new DateTime.now();
     String time = "${now.hour}:${now.minute}:${now.second}";
 
-    print(now);
+   
+    
 
     DropdownMenuItem<String> bulidMenuItem(String item) => DropdownMenuItem(
           value: item,
@@ -252,6 +450,8 @@ class _homeState extends State<home> {
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
           ),
         );
+
+       
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -323,6 +523,26 @@ class _homeState extends State<home> {
                       ElevatedButton(
                         onPressed: loginButton
                             ? () async {
+                               DocumentSnapshot documentSnapshotEslam = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc('7BrHBRzfWV6VIMTiKQs1')
+        .get();
+    DocumentSnapshot documentSnapshotMahmoud = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc('JREaX2U9h0J1OlTguAjs')
+        .get();
+    DocumentSnapshot documentSnapshotAbdo = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc('cTtofZa7zvPWKvWmVl4q')
+        .get();
+    DocumentSnapshot documentSnapshotSamy = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc('Ar9k6kZPpgFjJRl7HHbm')
+        .get();
+    DocumentSnapshot documentSnapshotZero = await FirebaseFirestore.instance
+        .collection('Users')
+        .doc('NCkpgnEBEUNAtjioS58B')
+        .get();
                                 if (loading) return;
                                 print(_dropdownValue);
                                 setState(() {
@@ -340,6 +560,7 @@ class _homeState extends State<home> {
                                     logoutButton = true;
                                     change = !false;
                                     loading = false;
+                                   
                                   });
                                   data.doc('7BrHBRzfWV6VIMTiKQs1').update({
                                     'Name': _dropdownValue,
@@ -503,657 +724,464 @@ class _homeState extends State<home> {
                         buttonColor: Colors.redAccent,
                         child: Column(
                           children: [
-                            ElevatedButton(
-                              onPressed: logoutButton
-                                  ? () async {
-                                      if (loading) return;
+                            Row(
+                              children: [
+                                ElevatedButton(
+                                  onPressed: logoutButton
+                                      ? () async {
+                                          if (loading) return;
 
-                                      setState(() {
-                                        loading = true;
-                                      });
-                                      await Future.delayed(Duration(seconds: 2));
-                                      final tome = DateTime.now();
-                                      String xtime =
-                                          "${tome.hour}:${tome.minute}:${tome.second}";
-                                      DocumentSnapshot documentSnapshotEslam =
-                                          await FirebaseFirestore.instance
-                                              .collection('Users')
-                                              .doc('7BrHBRzfWV6VIMTiKQs1')
-                                              .get();
-                                      DocumentSnapshot documentSnapshotMahmoud =
-                                          await FirebaseFirestore.instance
-                                              .collection('Users')
-                                              .doc('JREaX2U9h0J1OlTguAjs')
-                                              .get();
-                                      DocumentSnapshot documentSnapshotAbdo =
-                                          await FirebaseFirestore.instance
-                                              .collection('Users')
-                                              .doc('cTtofZa7zvPWKvWmVl4q')
-                                              .get();
-                                      DocumentSnapshot documentSnapshotSamy =
-                                          await FirebaseFirestore.instance
-                                              .collection('Users')
-                                              .doc('Ar9k6kZPpgFjJRl7HHbm')
-                                              .get();
-                                      DocumentSnapshot documentSnapshotZero =
-                                          await FirebaseFirestore.instance
-                                              .collection('Users')
-                                              .doc('NCkpgnEBEUNAtjioS58B')
-                                              .get();
-
-                                      if (_dropdownValue == 'Eslam') {
-                                         num P=0;
-                                         num C=0;
-                                         
-                                        final now = DateTime.now();
-                                        Timestamp t = (documentSnapshotEslam.data()!
-                                            as Map<String, dynamic>)['Login'];
-                                        DateTime d = t.toDate();
-                                       
-
-                                        setState(() {
-                                          loginButton = true;
-                                          logoutButton = false;
-                                          change = false;
-                                          loading = false;
-                                          num H=0;
-                                         num S =0;
-                                         num M=0;
-
-                                          Future.delayed(Duration(seconds: 0), () {
-                                             if ((documentSnapshotEslam.data()!
-                                            as Map<String, dynamic>)['pause']!=0) {
-                                              Timestamp p =(documentSnapshotEslam.data()!
-                                            as Map<String, dynamic>)['pause'];
-                                            DateTime P = p.toDate();
-                                        Timestamp c =(documentSnapshotEslam.data()!
-                                            as Map<String, dynamic>)['resume'];
-                                            DateTime C = c.toDate();
-                                            num H = (C.hour-now.hour) +( d.hour-P.hour);
-                                            num M = (C.minute-now.minute) +( d.minute-P.minute);
-                                            num S = (-C.second-now.second) +( d.second-P.second);
-                                                if(H<0) {
-                                             H= H*-1;
-                                            }
-                                             if(M<0){
-                                              M=M*-1;
-                                            }
-                                             if (S<0){
-                                              S=S*-1;
-
-                                            }
-                                            if (S>60){
-                                              M=M+1;
-                                              S=0;
-                                            }
-                                            if (M>60) {
-                                              H=H+1;
-                                              M=0;
-                                            }
-                                            showDialog(
-                                                context: context,
-                                                builder: (_) => SimpleDialog(
-                                                      title: Text(
-                                                          '${_dropdownValue} You Have Worked '),
-                                                      children: [
-                                                        Text(
-                                                            '${H} Hours :${M} Minutes :${S} Seconds')
-                                                      ],
-                                                      contentPadding:
-                                                          EdgeInsets.all(25),
-                                                    ));
+                                          setState(() {
+                                            loading = true;
+                                          });
+                                          await Future.delayed(Duration(seconds: 2));
                                           
-                                        }else{
-                                         num P=0;
-                                         num C=0;
-                                            num H = (now.hour-d.hour);
-                                            num M = (now.minute) -( d.minute);
-                                            num S = (now.second) -( d.second);
-                                                if(H<0) {
-                                             H= H*-1;
-                                            }
-                                             if(M<0){
-                                              M=M*-1;
-                                            }
-                                             if (S<0){
-                                              S=S*-1;
+                                          DocumentSnapshot documentSnapshotEslam =
+                                              await FirebaseFirestore.instance
+                                                  .collection('Users')
+                                                  .doc('7BrHBRzfWV6VIMTiKQs1')
+                                                  .get();
+                                          DocumentSnapshot documentSnapshotMahmoud =
+                                              await FirebaseFirestore.instance
+                                                  .collection('Users')
+                                                  .doc('JREaX2U9h0J1OlTguAjs')
+                                                  .get();
+                                          DocumentSnapshot documentSnapshotAbdo =
+                                              await FirebaseFirestore.instance
+                                                  .collection('Users')
+                                                  .doc('cTtofZa7zvPWKvWmVl4q')
+                                                  .get();
+                                          DocumentSnapshot documentSnapshotSamy =
+                                              await FirebaseFirestore.instance
+                                                  .collection('Users')
+                                                  .doc('Ar9k6kZPpgFjJRl7HHbm')
+                                                  .get();
+                                          DocumentSnapshot documentSnapshotZero =
+                                              await FirebaseFirestore.instance
+                                                  .collection('Users')
+                                                  .doc('NCkpgnEBEUNAtjioS58B')
+                                                  .get();
 
-                                            }
-                                            if (S>60){
-                                              M=M+1;
-                                              S=0;
-                                            }
-                                            if (M>60) {
-                                              H=H+1;
-                                              M=0;
-                                            }
-                                            showDialog(
-                                                context: context,
-                                                builder: (_) => SimpleDialog(
-                                                      title: Text(
-                                                          '${_dropdownValue} You Have Worked '),
-                                                      children: [
-                                                        Text(
-                                                            '${H} Hours :${M} Minutes :${S} Seconds')
-                                                      ],
-                                                      contentPadding:
-                                                          EdgeInsets.all(25),
-                                                    ));
-
-                                        }                                      // print(now.second);
-                                            // print(d.second);
-                                            // print(S);
+                                          if (_dropdownValue == 'Eslam') {
                                             
-                                          });
-                                        });
-                                        data.doc('7BrHBRzfWV6VIMTiKQs1').update(
-                                            {'logout': DateTime.now(), 'Login': 0,'pause':0,'resume':0});
-                                      } else if (_dropdownValue == 'Mahmoud') {
-                                        final now = DateTime.now();
-                                        Timestamp t = (documentSnapshotMahmoud.data()!
-                                            as Map<String, dynamic>)['Login'];
-                                        DateTime d = t.toDate();
-                                        
+                                             
+                                            final now = DateTime.now();
+                                            Timestamp t = (documentSnapshotEslam.data()!
+                                                as Map<String, dynamic>)['Login'];
+                                            DateTime d = t.toDate();
+                                           
 
-                                        setState(() {
-                                          loginButton = true;
-                                          logoutButton = false;
-                                          change = false;
-                                          loading = false;
+                                            setState(() {
+                                              loginButton = true;
+                                              logoutButton = false;
+                                              change = false;
+                                              loading = false;
+                                              
 
-                                           num H=0;
-                                         num S =0;
-                                         num M=0;
+                                              Future.delayed(Duration(seconds: 0), () {
+                                                 if ((documentSnapshotEslam.data()!
+                                                as Map<String, dynamic>)['pause']!=0) {
+                                                  Timestamp p =(documentSnapshotEslam.data()!
+                                                as Map<String, dynamic>)['pause'];
+                                                DateTime P = p.toDate();
+                                            Timestamp c =(documentSnapshotEslam.data()!
+                                                as Map<String, dynamic>)['resume'];
+                                                DateTime C = c.toDate();
+                                                DateTime BrkD = timeD(C, P);
+                                                DateTime logD = timeD(now ,d);
+                                                DateTime totD = timeD(logD ,BrkD);
+                                                num H = totD.hour;
+                                                num M = totD.minute;
+                                                num S = totD.second;
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (_) => SimpleDialog(
+                                                          title: Text(
+                                                              '${_dropdownValue} You Have Worked '),
+                                                          children: [
+                                                            Text(
+                                                                '${H} Hours :${M} Minutes :${S} Seconds')
+                                                          ],
+                                                          contentPadding:
+                                                              EdgeInsets.all(25),
+                                                        ));
+                                              
+                                            }else{
+                                            DateTime logD = timeD(now ,d);
+                                                num H = logD.hour;
+                                                num M = logD.minute;
+                                                num S = logD.second;
+                                                 
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (_) => SimpleDialog(
+                                                          title: Text(
+                                                              '${_dropdownValue} You Have Worked '),
+                                                          children: [
+                                                            Text(
+                                                                '${H} Hours :${M} Minutes :${S} Seconds')
+                                                          ],
+                                                          contentPadding:
+                                                              EdgeInsets.all(25),
+                                                        ));
 
-                                          Future.delayed(Duration(seconds: 0), () {
-                                             if ((documentSnapshotMahmoud.data()!
-                                            as Map<String, dynamic>)['pause']!=0) {
-                                              Timestamp p =(documentSnapshotMahmoud.data()!
-                                            as Map<String, dynamic>)['pause'];
-                                            DateTime P = p.toDate();
-                                        Timestamp c =(documentSnapshotMahmoud.data()!
-                                            as Map<String, dynamic>)['resume'];
-                                            DateTime C = c.toDate();
-
-                                            num H = (C.hour-now.hour) +( d.hour-P.hour);
-                                            num M = (C.minute-now.minute) +( d.minute-P.minute);
-                                            num S = (-C.second-now.second) +( d.second-P.second);
-                                                if(H<0) {
-                                             H= H*-1;
-                                            }
-                                             if(M<0){
-                                              M=M*-1;
-                                            }
-                                             if (S<0){
-                                              S=S*-1;
-
-                                            }
-                                            if (S>60){
-                                              M=M+1;
-                                              S=0;
-                                            }
-                                            if (M>60) {
-                                              H=H+1;
-                                              M=0;
-                                            }
-                                            showDialog(
-                                                context: context,
-                                                builder: (_) => SimpleDialog(
-                                                      title: Text(
-                                                          '${_dropdownValue} You Have Worked '),
-                                                      children: [
-                                                        Text(
-                                                            '${H} Hours :${M} Minutes :${S} Seconds')
-                                                      ],
-                                                      contentPadding:
-                                                          EdgeInsets.all(25),
-                                                    ));
-                                          
-                                        }else{
-                                         num P=0;
-                                         num C=0;
-                                            num H = (now.hour-d.hour);
-                                            num M = (now.minute) -( d.minute);
-                                            num S = (now.second) -( d.second);
-                                                if(H<0) {
-                                             H= H*-1;
-                                            }
-                                             if(M<0){
-                                              M=M*-1;
-                                            }
-                                             if (S<0){
-                                              S=S*-1;
-
-                                            }
-                                            if (S>60){
-                                              M=M+1;
-                                              S=0;
+                                            }                                      // print(now.second);
+                                                // print(d.second);
+                                                // print(S);
+                                                
+                                              });
+                                            });
+                                            data.doc('7BrHBRzfWV6VIMTiKQs1').update(
+                                                {'logout': DateTime.now(), 'Login': 0,'pause':0,'resume':0});
+                                          } else if (_dropdownValue == 'Mahmoud') {
+                                            final now = DateTime.now();
+                                            Timestamp t = (documentSnapshotMahmoud.data()!
+                                                as Map<String, dynamic>)['Login'];
+                                            DateTime d = t.toDate();
                                             
-                                            }
-                                            if (M>60) {
-                                              H=H+1;
-                                              M=0;
-                                            }
-                                            showDialog(
-                                                context: context,
-                                                builder: (_) => SimpleDialog(
-                                                      title: Text(
-                                                          '${_dropdownValue} You Have Worked '),
-                                                      children: [
-                                                        Text(
-                                                            '${H} Hours :${M} Minutes :${S} Seconds')
-                                                      ],
-                                                      contentPadding:
-                                                          EdgeInsets.all(25),
-                                                    ));
 
-                                        }                                
-                                            // print(now.second);
-                                            // print(d.second);
+                                            setState(() {
+                                              loginButton = true;
+                                              logoutButton = false;
+                                              change = false;
+                                              loading = false;
+
+                                             
+
+                                               Future.delayed(Duration(seconds: 0), () {
+                                                 if ((documentSnapshotEslam.data()!
+                                                as Map<String, dynamic>)['pause']!=0) {
+                                                  Timestamp p =(documentSnapshotMahmoud.data()!
+                                                as Map<String, dynamic>)['pause'];
+                                                DateTime P = p.toDate();
+                                            Timestamp c =(documentSnapshotMahmoud.data()!
+                                                as Map<String, dynamic>)['resume'];
+                                                DateTime C = c.toDate();
+                                                DateTime BrkD = timeD(C, P);
+                                                DateTime logD = timeD(now ,d);
+                                                DateTime totD = timeD(logD ,BrkD);
+                                                num H = totD.hour;
+                                                num M = totD.minute;
+                                                num S = totD.second;
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (_) => SimpleDialog(
+                                                          title: Text(
+                                                              '${_dropdownValue} You Have Worked '),
+                                                          children: [
+                                                            Text(
+                                                                '${H} Hours :${M} Minutes :${S} Seconds')
+                                                          ],
+                                                          contentPadding:
+                                                              EdgeInsets.all(25),
+                                                        ));
+                                              
+                                            }else{
+                                            DateTime logD = timeD(now ,d);
+                                                num H = logD.hour;
+                                                num M = logD.minute;
+                                                num S = logD.second;
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (_) => SimpleDialog(
+                                                          title: Text(
+                                                              '${_dropdownValue} You Have Worked '),
+                                                          children: [
+                                                            Text(
+                                                                '${H} Hours :${M} Minutes :${S} Seconds')
+                                                          ],
+                                                          contentPadding:
+                                                              EdgeInsets.all(25),
+                                                        ));
+
+                                            }                                
+                                                // print(now.second);
+                                                // print(d.second);
+                                               
+                                              });
+                                            });
+                                            data.doc('JREaX2U9h0J1OlTguAjs').update(
+                                                {'logout': DateTime.now(), 'Login': 0,'pause':0,'resume':0});
+                                          } else if (_dropdownValue == 'Abdo') {
+                                            final now = DateTime.now();
+                                            Timestamp t = (documentSnapshotAbdo.data()!
+                                                as Map<String, dynamic>)['Login'];
+                                            DateTime d = t.toDate();
+                                            
+                                            setState(() {
+                                              loginButton = true;
+                                              logoutButton = false;
+                                              change = false;
+                                              loading = false;
+
+                                               Future.delayed(Duration(seconds: 0), () {
+                                                 if ((documentSnapshotEslam.data()!
+                                                as Map<String, dynamic>)['pause']!=0) {
+                                                  Timestamp p =(documentSnapshotAbdo.data()!
+                                                as Map<String, dynamic>)['pause'];
+                                                DateTime P = p.toDate();
+                                            Timestamp c =(documentSnapshotAbdo.data()!
+                                                as Map<String, dynamic>)['resume'];
+                                                DateTime C = c.toDate();
+                                                DateTime BrkD = timeD(C, P);
+                                                DateTime logD = timeD(now ,d);
+                                                DateTime totD = timeD(logD ,BrkD);
+                                                num H = totD.hour;
+                                                num M = totD.minute;
+                                                num S = totD.second;
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (_) => SimpleDialog(
+                                                          title: Text(
+                                                              '${_dropdownValue} You Have Worked '),
+                                                          children: [
+                                                            Text(
+                                                                '${H} Hours :${M} Minutes :${S} Seconds')
+                                                          ],
+                                                          contentPadding:
+                                                              EdgeInsets.all(25),
+                                                        ));
+                                              
+                                            }else{
+                                            DateTime logD = timeD(now ,d);
+                                                num H = logD.hour;
+                                                num M = logD.minute;
+                                                num S = logD.second;
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (_) => SimpleDialog(
+                                                          title: Text(
+                                                              '${_dropdownValue} You Have Worked '),
+                                                          children: [
+                                                            Text(
+                                                                '${H} Hours :${M} Minutes :${S} Seconds')
+                                                          ],
+                                                          contentPadding:
+                                                              EdgeInsets.all(25),
+                                                        ));
+
+                                            }                                
+                                                // print(now.second);
+                                                // print(d.second);
+                                                // print(S);
+                                               
+                                              });
+                                            });
+                                            data.doc('cTtofZa7zvPWKvWmVl4q').update(
+                                                {'logout': DateTime.now(), 'Login': 0,'pause':0,'resume':0});
+                                          } else if (_dropdownValue == 'Samy') {
+                                            final now = DateTime.now();
+                                             Timestamp t = (documentSnapshotSamy.data()!
+                                                as Map<String, dynamic>)['Login'];
+                                            DateTime d = t.toDate();
                                            
-                                          });
-                                        });
-                                        data.doc('JREaX2U9h0J1OlTguAjs').update(
-                                            {'logout': DateTime.now(), 'Login': 0,'pause':0,'resume':0});
-                                      } else if (_dropdownValue == 'Abdo') {
-                                        final now = DateTime.now();
-                                        Timestamp t = (documentSnapshotAbdo.data()!
-                                            as Map<String, dynamic>)['Login'];
-                                        DateTime d = t.toDate();
-                                        
-                                        setState(() {
-                                          loginButton = true;
-                                          logoutButton = false;
-                                          change = false;
-                                          loading = false;
 
-                                             num H=0;
-                                         num S =0;
-                                         num M=0;
+                                            setState(() {
+                                              loginButton = true;
+                                              logoutButton = false;
+                                              change = false;
+                                              loading = false;
 
-                                          Future.delayed(Duration(seconds: 0), () {
-                                             if ((documentSnapshotAbdo.data()!
-                                            as Map<String, dynamic>)['pause']!=0) {
-                                              Timestamp p =(documentSnapshotAbdo.data()!
-                                            as Map<String, dynamic>)['pause'];
-                                            DateTime P = p.toDate();
-                                        Timestamp c =(documentSnapshotAbdo.data()!
-                                            as Map<String, dynamic>)['resume'];
-                                            DateTime C = c.toDate();
+                                                  Future.delayed(Duration(seconds: 0), () {
+                                                 if ((documentSnapshotEslam.data()!
+                                                as Map<String, dynamic>)['pause']!=0) {
+                                                  Timestamp p =(documentSnapshotSamy.data()!
+                                                as Map<String, dynamic>)['pause'];
+                                                DateTime P = p.toDate();
+                                            Timestamp c =(documentSnapshotSamy.data()!
+                                                as Map<String, dynamic>)['resume'];
+                                                DateTime C = c.toDate();
+                                                DateTime BrkD = timeD(C, P);
+                                                DateTime logD = timeD(now ,d);
+                                                DateTime totD = timeD(logD ,BrkD);
+                                                num H = totD.hour;
+                                                num M = totD.minute;
+                                                num S = totD.second;
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (_) => SimpleDialog(
+                                                          title: Text(
+                                                              '${_dropdownValue} You Have Worked '),
+                                                          children: [
+                                                            Text(
+                                                                '${H} Hours :${M} Minutes :${S} Seconds')
+                                                          ],
+                                                          contentPadding:
+                                                              EdgeInsets.all(25),
+                                                        ));
+                                              
+                                            }else{
+                                            DateTime logD = timeD(now ,d);
+                                                num H = logD.hour;
+                                                num M = logD.minute;
+                                                num S = logD.second;
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (_) => SimpleDialog(
+                                                          title: Text(
+                                                              '${_dropdownValue} You Have Worked '),
+                                                          children: [
+                                                            Text(
+                                                                '${H} Hours :${M} Minutes :${S} Seconds')
+                                                          ],
+                                                          contentPadding:
+                                                              EdgeInsets.all(25),
+                                                        ));
+                                              
+                                            }
+                                               
+                                              });
+                                            });
+                                            data.doc('Ar9k6kZPpgFjJRl7HHbm').update(
+                                                {'logout': DateTime.now(), 'Login': 0,'pause':0,'resume':0});
+                                          } else if (_dropdownValue == 'Zero') {
+                                            final now = DateTime.now();
+                                             Timestamp t = (documentSnapshotZero.data()!
+                                                as Map<String, dynamic>)['Login'];
+                                            DateTime d = t.toDate();
+                                           
 
-                                            num H = (C.hour-now.hour) +( d.hour-P.hour);
-                                            num M = (C.minute-now.minute) +( d.minute-P.minute);
-                                            num S = (-C.second-now.second) +( d.second-P.second);
-                                                if(H<0) {
-                                             H= H*-1;
-                                            }
-                                             if(M<0){
-                                              M=M*-1;
-                                            }
-                                             if (S<0){
-                                              S=S*-1;
+                                            setState(() {
+                                              loginButton = true;
+                                              logoutButton = false;
+                                              change = false;
 
-                                            }
-                                            if (S>60){
-                                              M=M+1;
-                                              S=0;
-                                            }
-                                            if (M>60) {
-                                              H=H+1;
-                                              M=0;
-                                            }
-                                            showDialog(
-                                                context: context,
-                                                builder: (_) => SimpleDialog(
-                                                      title: Text(
-                                                          '${_dropdownValue} You Have Worked '),
-                                                      children: [
-                                                        Text(
-                                                            '${H} Hours :${M} Minutes :${S} Seconds')
-                                                      ],
-                                                      contentPadding:
-                                                          EdgeInsets.all(25),
-                                                    ));
+                                            Future.delayed(Duration(seconds: 0), () {
+                                                 if ((documentSnapshotEslam.data()!
+                                                as Map<String, dynamic>)['pause']!=0) {
+                                                  Timestamp p =(documentSnapshotZero.data()!
+                                                as Map<String, dynamic>)['pause'];
+                                                DateTime P = p.toDate();
+                                            Timestamp c =(documentSnapshotZero.data()!
+                                                as Map<String, dynamic>)['resume'];
+                                                DateTime C = c.toDate();
+                                                DateTime BrkD = timeD(C, P);
+                                                DateTime logD = timeD(now ,d);
+                                                DateTime totD = timeD(logD ,BrkD);
+                                                num H = totD.hour;
+                                                num M = totD.minute;
+                                                num S = totD.second;
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (_) => SimpleDialog(
+                                                          title: Text(
+                                                              '${_dropdownValue} You Have Worked '),
+                                                          children: [
+                                                            Text(
+                                                                '${H} Hours :${M} Minutes :${S} Seconds')
+                                                          ],
+                                                          contentPadding:
+                                                              EdgeInsets.all(25),
+                                                        ));
+                                              
+                                            }else{
+                                            DateTime logD = timeD(now ,d);
+                                                num H = logD.hour;
+                                                num M = logD.minute;
+                                                num S = logD.second;
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (_) => SimpleDialog(
+                                                          title: Text(
+                                                              '${_dropdownValue} You Have Worked '),
+                                                          children: [
+                                                            Text(
+                                                                '${H} Hours :${M} Minutes :${S} Seconds')
+                                                          ],
+                                                          contentPadding:
+                                                              EdgeInsets.all(25),
+                                                        ));
+
+                                            }                                
+                                                // print(now.second);
+                                                // print(d.second);
+                                               
+                                              });
+                                            });
+                                            data.doc('NCkpgnEBEUNAtjioS58B').update(
+                                                {'logout': DateTime.now(), 'Login': 0,'pause':0,'resume':0});
+                                          } else {
+                                            _show3Toast(context);
+                                          }
                                           
-                                        }else{
-                                         num P=0;
-                                         num C=0;
-                                            num H = (now.hour-d.hour);
-                                            num M = (now.minute) -( d.minute);
-                                            num S = (now.second) -( d.second);
-                                                if(H<0) {
-                                             H= H*-1;
-                                            }
-                                             if(M<0){
-                                              M=M*-1;
-                                            }
-                                             if (S<0){
-                                              S=S*-1;
 
-                                            }
-                                            if (S>60){
-                                              M=M+1;
-                                              S=0;
-                                            }
-                                            if (M>60) {
-                                              H=H+1;
-                                              M=0;
-                                            }
-                                            showDialog(
-                                                context: context,
-                                                builder: (_) => SimpleDialog(
-                                                      title: Text(
-                                                          '${_dropdownValue} You Have Worked '),
-                                                      children: [
-                                                        Text(
-                                                            '${H} Hours :${M} Minutes :${S} Seconds')
-                                                      ],
-                                                      contentPadding:
-                                                          EdgeInsets.all(25),
-                                                    ));
-
-                                        }                                
-                                            // print(now.second);
-                                            // print(d.second);
-                                            // print(S);
-                                           
+                                          setState(() {
+                                            // loginButton = true;
+                                            // logoutButton = false;
+                                            //
                                           });
-                                        });
-                                        data.doc('cTtofZa7zvPWKvWmVl4q').update(
-                                            {'logout': DateTime.now(), 'Login': 0,'pause':0,'resume':0});
-                                      } else if (_dropdownValue == 'Samy') {
-                                        final now = DateTime.now();
-                                         Timestamp t = (documentSnapshotSamy.data()!
-                                            as Map<String, dynamic>)['Login'];
-                                        DateTime d = t.toDate();
-                                       
-
-                                        setState(() {
-                                          loginButton = true;
-                                          logoutButton = false;
-                                          change = false;
-                                          loading = false;
-
-                                             num H=0;
-                                         num S =0;
-                                         num M=0;
-
-                                          Future.delayed(Duration(seconds: 0), () {
-                                             if ((documentSnapshotSamy.data()!
-                                            as Map<String, dynamic>)['pause']!=0) {
-                                              Timestamp p =(documentSnapshotSamy.data()!
-                                            as Map<String, dynamic>)['pause'];
-                                            DateTime P = p.toDate();
-                                        Timestamp c =(documentSnapshotSamy.data()!
-                                            as Map<String, dynamic>)['resume'];
-                                            DateTime C = c.toDate();
-
-                                            num H = (C.hour-now.hour) +( d.hour-P.hour);
-                                            num M = (C.minute-now.minute) +( d.minute-P.minute);
-                                            num S = (-C.second-now.second) +( d.second-P.second);
-                                                if(H<0) {
-                                             H= H*-1;
-                                            }
-                                             if(M<0){
-                                              M=M*-1;
-                                            }
-                                             if (S<0){
-                                              S=S*-1;
-
-                                            }
-                                            if (S>60){
-                                              M=M+1;
-                                              S=0;
-                                            }
-                                            if (M>60) {
-                                              H=H+1;
-                                              M=0;
-                                            }
-                                            showDialog(
-                                                context: context,
-                                                builder: (_) => SimpleDialog(
-                                                      title: Text(
-                                                          '${_dropdownValue} You Have Worked '),
-                                                      children: [
-                                                        Text(
-                                                            '${H} Hours :${M} Minutes :${S} Seconds')
-                                                      ],
-                                                      contentPadding:
-                                                          EdgeInsets.all(25),
-                                                    ));
-                                          
-                                        }else{
-                                         num P=0;
-                                         num C=0;
-                                            num H = (now.hour-d.hour);
-                                            num M = (now.minute) -( d.minute);
-                                            num S = (now.second) -( d.second);
-                                                if(H<0) {
-                                             H= H*-1;
-                                            }
-                                             if(M<0){
-                                              M=M*-1;
-                                            }
-                                             if (S<0){
-                                              S=S*-1;
-
-                                            }
-                                            if (S>60){
-                                              M=M+1;
-                                              S=0;
-                                            }
-                                            if (M>60) {
-                                              H=H+1;
-                                              M=0;
-                                            }
-                                            showDialog(
-                                                context: context,
-                                                builder: (_) => SimpleDialog(
-                                                      title: Text(
-                                                          '${_dropdownValue} You Have Worked '),
-                                                      children: [
-                                                        Text(
-                                                            '${H} Hours :${M} Minutes :${S} Seconds')
-                                                      ],
-                                                      contentPadding:
-                                                          EdgeInsets.all(25),
-                                                    ));
-
-                                        }                                
-                                            // print(now.second);
-                                            // print(d.second);
-                                           
-                                          });
-                                        });
-                                        data.doc('Ar9k6kZPpgFjJRl7HHbm').update(
-                                            {'logout': DateTime.now(), 'Login': 0,'pause':0,'resume':0});
-                                      } else if (_dropdownValue == 'Zero') {
-                                        final now = DateTime.now();
-                                         Timestamp t = (documentSnapshotZero.data()!
-                                            as Map<String, dynamic>)['Login'];
-                                        DateTime d = t.toDate();
-                                       
-
-                                        setState(() {
-                                          loginButton = true;
-                                          logoutButton = false;
-                                          change = false;
-
-                                         num H=0;
-                                         num S =0;
-                                         num M=0;
-
-                                          Future.delayed(Duration(seconds: 0), () {
-                                             if ((documentSnapshotZero.data()!
-                                            as Map<String, dynamic>)['pause']!=0) {
-                                              Timestamp p =(documentSnapshotZero.data()!
-                                            as Map<String, dynamic>)['pause'];
-                                            DateTime P = p.toDate();
-                                        Timestamp c =(documentSnapshotZero.data()!
-                                            as Map<String, dynamic>)['resume'];
-                                            DateTime C = c.toDate();
-
-                                            num H = (C.hour-now.hour) +( d.hour-P.hour);
-                                            num M = (C.minute-now.minute) +( d.minute-P.minute);
-                                            num S = (-C.second-now.second) +( d.second-P.second);
-                                                if(H<0) {
-                                             H= H*-1;
-                                            }
-                                             if(M<0){
-                                              M=M*-1;
-                                            }
-                                             if (S<0){
-                                              S=S*-1;
-
-                                            }
-                                            if (S>60){
-                                              M=M+1;
-                                              S=0;
-                                            }
-                                            if (M>60) {
-                                              H=H+1;
-                                              M=0;
-                                            }
-                                            showDialog(
-                                                context: context,
-                                                builder: (_) => SimpleDialog(
-                                                      title: Text(
-                                                          '${_dropdownValue} You Have Worked '),
-                                                      children: [
-                                                        Text(
-                                                            '${H} Hours :${M} Minutes :${S} Seconds')
-                                                      ],
-                                                      contentPadding:
-                                                          EdgeInsets.all(25),
-                                                    ));
-                                          
-                                        }else{
-                                         num P=0;
-                                         num C=0;
-                                            num H = (now.hour-d.hour);
-                                            num M = (now.minute) -( d.minute);
-                                            num S = (now.second) -( d.second);
-                                                if(H<0) {
-                                             H= H*-1;
-                                            }
-                                             if(M<0){
-                                              M=M*-1;
-                                            }
-                                             if (S<0){
-                                              S=S*-1;
-
-                                            }
-                                            if (S>60){
-                                              M=M+1;
-                                              S=0;
-                                            }
-                                            if (M>60) {
-                                              H=H+1;
-                                              M=0;
-                                            }
-                                            showDialog(
-                                                context: context,
-                                                builder: (_) => SimpleDialog(
-                                                      title: Text(
-                                                          '${_dropdownValue} You Have Worked '),
-                                                      children: [
-                                                        Text(
-                                                            '${H} Hours :${M} Minutes :${S} Seconds')
-                                                      ],
-                                                      contentPadding:
-                                                          EdgeInsets.all(25),
-                                                    ));
-
-                                        }                                
-                                            // print(now.second);
-                                            // print(d.second);
-                                           
-                                          });
-                                        });
-                                        data.doc('NCkpgnEBEUNAtjioS58B').update(
-                                            {'logout': DateTime.now(), 'Login': 0,'pause':0,'resume':0});
-                                      } else {
-                                        _show3Toast(context);
-                                      }
-                                      _showDialog();
-
-                                      setState(() {
-                                        // loginButton = true;
-                                        // logoutButton = false;
-                                        //
-                                      });
-                                    }
-                                  : null,
-                              child: loading
-                                  ? Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        CircularProgressIndicator(
-                                            color: Colors.white),
-                                        const SizedBox(
-                                          width: 24,
+                                        }
+                                      : null,
+                                  child: loading
+                                      ? Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            CircularProgressIndicator(
+                                                color: Colors.white),
+                                            const SizedBox(
+                                              width: 24,
+                                            ),
+                                            Text("Please Wait ...")
+                                          ],
+                                        )
+                                      : Row(
+                                          children: [
+                                            Text(
+                                              'LogOut    ',
+                                              style: TextStyle(fontSize: 20),
+                                            ),
+                                            Icon(Icons.login_outlined),
+                                          ],
                                         ),
-                                        Text("Please Wait ...")
-                                      ],
-                                    )
-                                  : Row(
-                                      children: [
-                                        Text(
-                                          '  LogOut      ',
-                                          style: TextStyle(fontSize: 20),
-                                        ),
-                                        Icon(Icons.login_outlined),
-                                      ],
-                                    ),
-                              style: ElevatedButton.styleFrom(
-                                  primary: Colors.red,
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 50, vertical: 20),
-                                  minimumSize: Size.fromHeight(72),
-                                  shape: StadiumBorder(),
-                                  textStyle: const TextStyle(
-                                      fontSize: 30, fontWeight: FontWeight.bold)),
-                            ),
-                            SizedBox(height: 15,),
-                            logoutButton?
-                            ElevatedButton(onPressed: () async {  !change
+                                  style: ElevatedButton.styleFrom(
+                                      primary: Colors.red,
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 25, vertical: 20),
+                                      // minimumSize: Size.fromHeight(50),
+                                      shape: StadiumBorder(),
+                                      textStyle: const TextStyle(
+                                          fontSize: 16, fontWeight: FontWeight.bold)),
+                                ),
+                                SizedBox(width: 10,),
+                                logoutButton?
+                                ElevatedButton(onPressed: () async {  !change
                     ? _show2Toast(context)
                     : setState(
-                        () async {
-                          bloaading=true;
-                          BreakS(context);
-                          logoutButton = false;
-                          await Future.delayed(Duration(seconds: 0));
-                          if (_dropdownValue == 'Eslam') {
-                            setState(() {bloaading=false;});
-                            data
-                                .doc('7BrHBRzfWV6VIMTiKQs1')
-                                .update({'pause': DateTime.now(),'BreakStart':1});
-                          } else if (_dropdownValue == 'Mahmoud') {
-                            setState(() {bloaading=false;});
-                            data
-                                .doc('JREaX2U9h0J1OlTguAjs')
-                                .update({'pause': DateTime.now(),'BreakStart':1});
-                          } else if (_dropdownValue == 'Abdo') {
-                            setState(() {bloaading=false;});
-                            data
-                                .doc('cTtofZa7zvPWKvWmVl4q')
-                                .update({'pause': DateTime.now(),'BreakStart':1});
-                          } else if (_dropdownValue == 'Samy') {
-                            setState(() {bloaading=false;});
-                            data
-                                .doc('Ar9k6kZPpgFjJRl7HHbm')
-                                .update({'pause': DateTime.now(),'BreakStart':1});
-                          } else if (_dropdownValue == 'Zero') {
-                            setState(() {bloaading=false;});
-                            data
-                                .doc('NCkpgnEBEUNAtjioS58B')
-                                .update({'pause': DateTime.now(),'BreakStart':1});
-                          } else {
-                            _showToast(context);
-                            logoutButton = false;
-                          }
-                        },
+                            () async {
+                              bloaading=true;
+                              BreakS(context);
+                              logoutButton = false;
+                              await Future.delayed(Duration(seconds: 0));
+                              if (_dropdownValue == 'Eslam') {
+                                setState(() {bloaading=false;});
+                                data
+                                    .doc('7BrHBRzfWV6VIMTiKQs1')
+                                    .update({'pause': DateTime.now(),'BreakStart':1});
+                              } else if (_dropdownValue == 'Mahmoud') {
+                                setState(() {bloaading=false;});
+                                data
+                                    .doc('JREaX2U9h0J1OlTguAjs')
+                                    .update({'pause': DateTime.now(),'BreakStart':1});
+                              } else if (_dropdownValue == 'Abdo') {
+                                setState(() {bloaading=false;});
+                                data
+                                    .doc('cTtofZa7zvPWKvWmVl4q')
+                                    .update({'pause': DateTime.now(),'BreakStart':1});
+                              } else if (_dropdownValue == 'Samy') {
+                                setState(() {bloaading=false;});
+                                data
+                                    .doc('Ar9k6kZPpgFjJRl7HHbm')
+                                    .update({'pause': DateTime.now(),'BreakStart':1});
+                              } else if (_dropdownValue == 'Zero') {
+                                setState(() {bloaading=false;});
+                                data
+                                    .doc('NCkpgnEBEUNAtjioS58B')
+                                    .update({'pause': DateTime.now(),'BreakStart':1});
+                              } else {
+                                _showToast(context);
+                                logoutButton = false;
+                              }
+                            },
                       );
                 await Future.delayed(Duration(minutes: 30));
                 setState(() async {
@@ -1161,137 +1189,216 @@ class _homeState extends State<home> {
                   BreakE(context);
                   await Future.delayed(Duration(seconds: 2));
                   if (_dropdownValue == 'Eslam') {
-                            setState(() 
-                            {
-                              bloaading=false;
-                            });
-                            data
-                                .doc('7BrHBRzfWV6VIMTiKQs1')
-                                .update({'resume': DateTime.now(),'BreakStart':0});
-                          } else if (_dropdownValue == 'Mahmoud') {
-                            setState(() {bloaading=false;});
-                            data
-                                .doc('JREaX2U9h0J1OlTguAjs')
-                                .update({'resume': DateTime.now(),'BreakStart':0});
-                          } else if (_dropdownValue == 'Abdo') {
-                            setState(() {bloaading=false;});
-                            data
-                                .doc('cTtofZa7zvPWKvWmVl4q')
-                                .update({'resume': DateTime.now(),'BreakStart':0});
-                          } else if (_dropdownValue == 'Samy') {
-                            setState(() {bloaading=false;});
-                            data
-                                .doc('Ar9k6kZPpgFjJRl7HHbm')
-                                .update({'resume': DateTime.now(),'BreakStart':0});
-                          } else if (_dropdownValue == 'Zero') {
-                            setState(() {bloaading=false;});
-                            data
-                                .doc('NCkpgnEBEUNAtjioS58B')
-                                .update({'resume': DateTime.now(),'BreakStart':0});
-                          } else {
-                            _showToast(context);
-                            logoutButton = false;
-                          }
+                                setState(() 
+                                {
+                                  bloaading=false;
+                                });
+                                data
+                                    .doc('7BrHBRzfWV6VIMTiKQs1')
+                                    .update({'resume': DateTime.now(),'BreakStart':0});
+                              } else if (_dropdownValue == 'Mahmoud') {
+                                setState(() {bloaading=false;});
+                                data
+                                    .doc('JREaX2U9h0J1OlTguAjs')
+                                    .update({'resume': DateTime.now(),'BreakStart':0});
+                              } else if (_dropdownValue == 'Abdo') {
+                                setState(() {bloaading=false;});
+                                data
+                                    .doc('cTtofZa7zvPWKvWmVl4q')
+                                    .update({'resume': DateTime.now(),'BreakStart':0});
+                              } else if (_dropdownValue == 'Samy') {
+                                setState(() {bloaading=false;});
+                                data
+                                    .doc('Ar9k6kZPpgFjJRl7HHbm')
+                                    .update({'resume': DateTime.now(),'BreakStart':0});
+                              } else if (_dropdownValue == 'Zero') {
+                                setState(() {bloaading=false;});
+                                data
+                                    .doc('NCkpgnEBEUNAtjioS58B')
+                                    .update({'resume': DateTime.now(),'BreakStart':0});
+                              } else {
+                                _showToast(context);
+                                logoutButton = false;
+                              }
                   logoutButton = true;
           
                 });
                 ;
-                              
-                            }, child:bloaading
-                            ? Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  CircularProgressIndicator(
-                                      color: Colors.white),
-                                  const SizedBox(
-                                    width: 24,
+                                  
+                                }, child:bloaading
+                                ? Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      
+                                      CircularProgressIndicator(
+                                          color: Colors.white),
+                                      const SizedBox(
+                                        width: 24,
+                                      ),
+                                      Text(" You Break is gonna Start in Few Seconds")
+                                    ],
+                                  )
+                                : Row(
+                                    children: [
+                                     
+                                      Icon(Icons.food_bank),
+                                      Text(
+                                        '   Start Break',
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                    ],
                                   ),
-                                  Text(" You Break is gonna Start in Few Seconds")
-                                ],
-                              )
-                            : Row(
-                                children: [
-                                  Icon(Icons.food_bank),
-                                  Text(
-                                    '   Start Break',
-                                    style: TextStyle(fontSize: 20),
-                                  ),
-                                ],
-                              ),
-                        style: ElevatedButton.styleFrom(
-                            primary: Colors.green,
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 50, vertical: 20),
-                            minimumSize: Size.fromHeight(72),
-                            shape: StadiumBorder(),
-                            textStyle: const TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.bold)),)
-                            :ElevatedButton(onPressed: () {
-                                !change
+                            style: ElevatedButton.styleFrom(
+                                primary: Colors.green,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 25, vertical: 20),
+                                // minimumSize: Size.fromHeight(72),
+                                shape: StadiumBorder(),
+                                textStyle: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold)),
+                                    )
+                                :ElevatedButton(onPressed: () {
+                                    !change
                     ? _show2Toast(context)
                     : setState(() {
                       BreakE(context);
-                        logoutButton = true;
-                        if (_dropdownValue == 'Eslam') {
-                            setState(() {});
-                            data
-                                .doc('7BrHBRzfWV6VIMTiKQs1')
-                                .update({'resume': DateTime.now(),'BreakStart':0});
-                          } else if (_dropdownValue == 'Mahmoud') {
-                            setState(() {});
-                            data
-                                .doc('JREaX2U9h0J1OlTguAjs')
-                                .update({'resume': DateTime.now(),'BreakStart':0});
-                          } else if (_dropdownValue == 'Abdo') {
-                            setState(() {});
-                            data
-                                .doc('cTtofZa7zvPWKvWmVl4q')
-                                .update({'resume': DateTime.now(),'BreakStart':0});
-                          } else if (_dropdownValue == 'Samy') {
-                            setState(() {});
-                            data
-                                .doc('Ar9k6kZPpgFjJRl7HHbm')
-                                .update({'resume': DateTime.now(),'BreakStart':0});
-                          } else if (_dropdownValue == 'Zero') {
-                            setState(() {});
-                            data
-                                .doc('NCkpgnEBEUNAtjioS58B')
-                                .update({'resume': DateTime.now(),'BreakStart':0});
-                          } else {
-                            _showToast(context);
-                            logoutButton = false;
-                          }
+                            logoutButton = true;
+                            if (_dropdownValue == 'Eslam') {
+                                setState(() {});
+                                data
+                                    .doc('7BrHBRzfWV6VIMTiKQs1')
+                                    .update({'resume': DateTime.now(),'BreakStart':0});
+                              } else if (_dropdownValue == 'Mahmoud') {
+                                setState(() {});
+                                data
+                                    .doc('JREaX2U9h0J1OlTguAjs')
+                                    .update({'resume': DateTime.now(),'BreakStart':0});
+                              } else if (_dropdownValue == 'Abdo') {
+                                setState(() {});
+                                data
+                                    .doc('cTtofZa7zvPWKvWmVl4q')
+                                    .update({'resume': DateTime.now(),'BreakStart':0});
+                              } else if (_dropdownValue == 'Samy') {
+                                setState(() {});
+                                data
+                                    .doc('Ar9k6kZPpgFjJRl7HHbm')
+                                    .update({'resume': DateTime.now(),'BreakStart':0});
+                              } else if (_dropdownValue == 'Zero') {
+                                setState(() {});
+                                data
+                                    .doc('NCkpgnEBEUNAtjioS58B')
+                                    .update({'resume': DateTime.now(),'BreakStart':0});
+                              } else {
+                                _showToast(context);
+                                logoutButton = false;
+                              }
                       });
-                              
-                            }, child: bloaading
-                            ? Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  CircularProgressIndicator(
-                                      color: Colors.white),
-                                  const SizedBox(
-                                    width: 24,
+                                  
+                                }, child: bloaading
+                                ? Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      CircularProgressIndicator(
+                                          color: Colors.white),
+                                      const SizedBox(
+                                        width: 24,
+                                      ),
+                                      Text(" You Break is gonna End in Few Seconds")
+                                    ],
+                                  )
+                                : Row(
+                                    children: [
+                                      Icon(Icons.work_outline),
+                                      Text(
+                                        '   End Break',
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                    ],
                                   ),
-                                  Text(" You Break is gonna End in Few Seconds")
+                            style: ElevatedButton.styleFrom(
+                                primary: Colors.blue,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 25, vertical: 20),
+                                // minimumSize: Size.fromHeight(72),
+                                shape: StadiumBorder(),
+                                textStyle: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold)))
+                              ],
+                            ),
+                            SizedBox(height: 50,),
+                              DataTable(
+                                
+                                 decoration: BoxDecoration(color: Colors.orangeAccent, borderRadius: BorderRadius.circular(50), ),                           
+                                    columns: [
+                                  
+                                  DataColumn(label: Text("login")),
+                                  DataColumn(label: Text("logout")),
+                                  DataColumn(label: Text("Duration")),
                                 ],
-                              )
-                            : Row(
-                                children: [
-                                  Icon(Icons.work_outline),
-                                  Text(
-                                    '   End Break',
-                                    style: TextStyle(fontSize: 20),
-                                  ),
+                                
+                                 rows: [
+                                  //  DataRow(cells: [cells])
+                                 ]),
+                                 logoutButton
+                                  ?  FutureBuilder(
+                                    future : logtim(),
+
+                                    builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                                      return DataTable(
+                                
+                                 decoration: BoxDecoration(color: Colors.white38, borderRadius: BorderRadius.circular(50), ),                           
+                                    columns: [
+                                   DataColumn(label:  FutureBuilder(
+                                    future : logtim(),
+
+                                    builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                                      return Text('${snapshot.data}');
+                                     },
+                                    )),
+                                     DataColumn(label:  FutureBuilder(
+                                    future : logtimo(),
+
+                                    builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                                      return Text('${snapshot.data}');
+                                     },
+                                    )),
+                                     DataColumn(label:  FutureBuilder(
+                                    future : timeall(),
+
+                                    builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                                      return Text('${snapshot.data}');
+                                     },
+                                    )),
+                                  
+                                  
+                                  
+                                  
                                 ],
-                              ),
-                        style: ElevatedButton.styleFrom(
-                            primary: Colors.blue,
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 50, vertical: 20),
-                            minimumSize: Size.fromHeight(72),
-                            shape: StadiumBorder(),
-                            textStyle: const TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.bold)))
+                                
+                                 rows: [
+                                  //  DataRow(cells: [cells])
+                                 ]) ;
+                                     },
+                                    )
+                                      
+                                      
+                                      
+                                  
+                                  
+                                     
+                                      : DataTable(
+                                
+                                 decoration: BoxDecoration(color: Colors.white38, borderRadius: BorderRadius.circular(50), ),                           
+                                    columns: [
+                                  DataColumn(label: Text("Name")),
+                                  DataColumn(label: Text("login")),
+                                  DataColumn(label: Text("logout")),
+                                  DataColumn(label: Text("Duration")),
+                                ],
+                                
+                                 rows: [
+                                  //  DataRow(cells: [cells])
+                                 ]),
                           ],
                         ),
                       )
