@@ -21,7 +21,7 @@ class home extends StatefulWidget {
 class _homeState extends State<home> {
   Duration Eduration = Duration();
   Duration bduration = Duration();
-  var Uid =  {'Samy':'Ar9k6kZPpgFjJRl7HHbm', 'Eslam':'7BrHBRzfWV6VIMTiKQs1', 'Mahmoud':'JREaX2U9h0J1OlTguAjs', 'Abdo':'NCkpgnEBEUNAtjioS58B', 'Zero':'cTtofZa7zvPWKvWmVl4q'};
+  
 
   Timer? etimer;
   Timer? btimer;
@@ -541,6 +541,7 @@ void brkcount() {
        _showToast(context);
           
         } else {
+          if (_dropdownValue=='Eslam') {
             DateTime now = new DateTime.now();
             int dayOfYear = int.parse(DateFormat("D").format(now));
 
@@ -555,7 +556,7 @@ void brkcount() {
 
 
               final snapShot = await 
-    FirebaseFirestore.instance.collection('Users').doc(Uid[_dropdownValue]).collection('Weeks').doc('Week${y}')// varuId in your case
+    FirebaseFirestore.instance.collection('Users').doc('7BrHBRzfWV6VIMTiKQs1').collection('Weeks').doc('Week${y}')// varuId in your case
   .get();
 
 if (snapShot == null || !snapShot.exists) {
@@ -605,6 +606,11 @@ print("Error");
                        
 
                             }
+
+
+            
+          } else {
+          }
             
         }
          

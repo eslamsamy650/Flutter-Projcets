@@ -27,7 +27,6 @@ class week extends StatefulWidget {
 }
  
 class _weekState extends State<week> {
-    var Uid =  {'Samy':'Ar9k6kZPpgFjJRl7HHbm', 'Eslam':'7BrHBRzfWV6VIMTiKQs1', 'Mahmoud':'JREaX2U9h0J1OlTguAjs', 'Abdo':'NCkpgnEBEUNAtjioS58B', 'Zero':'cTtofZa7zvPWKvWmVl4q'};
     Future<Text> monday() async {
   DocumentSnapshot documentSnapshotEslam = await FirebaseFirestore.instance
         .collection('Users')
@@ -49,7 +48,7 @@ class _weekState extends State<week> {
         .collection('Users')
         .doc('NCkpgnEBEUNAtjioS58B')
         .get();
-  {
+  if (widget.score=="Eslam"){
          DateTime now = new DateTime.now();
             int dayOfYear = int.parse(DateFormat("D").format(now));
 
@@ -57,7 +56,7 @@ class _weekState extends State<week> {
             num y =((dayOfYear - now.weekday + 10) / 7).floor();
    
            final snapShot = await 
-    FirebaseFirestore.instance.collection('Users').doc(Uid('${widget.score}')).collection('Weeks').doc('Week${y}')// varuId in your case
+    FirebaseFirestore.instance.collection('Users').doc('7BrHBRzfWV6VIMTiKQs1').collection('Weeks').doc('Week${y}')// varuId in your case
   .get();
      Timestamp x =
           (snapShot.data()! as Map<String, dynamic>)['Monday']['Date'];
@@ -66,6 +65,10 @@ class _weekState extends State<week> {
       
       String H = DateFormat('EEE d MMM').format(d);
     return Text(H);
+  }
+  else{
+    return Text("x");
+  }
 
 }
 Future<Text> sunday() async {
